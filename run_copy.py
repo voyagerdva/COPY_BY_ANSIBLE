@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import os
-import sys
 
 def readCurrIndex(indexFile):
     with open(indexFile, "r") as f:
@@ -27,7 +26,8 @@ def makeInventory(hostsFile, ip_address):
         
         
 def copyWithAnsible():
-    os.system("ansible all -m shell -a 'uptime'")
+    os.system("ansible-playbook playbook_copy.yml")
+
 
 
 def writeToHostDone(hostDoneFile, index, ip_address):

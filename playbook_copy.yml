@@ -1,0 +1,17 @@
+--- 
+- hosts: all
+  remote_user: root
+  become: true
+  
+  tasks:
+
+  - name: Create directory
+    file:
+      path: /ARCHIVE
+      state: directory
+
+  - name: Copy file to remote server
+    copy:
+      src: TEST_FILE.TXT
+      dest: /ARCHIVE
+
