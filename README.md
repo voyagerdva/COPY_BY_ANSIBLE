@@ -1,7 +1,12 @@
-Task:
-If you want to upload some file once per hour to 1 server from 1000 servers, how it can be done? What special cases should be taken into account?
+######################################################################################################
+#                                                                                                    #
+#   Task:                                                                                            #
+#   If you want to upload some file once per hour to 1 server from 1000 servers, how it can be done? #
+#   What special cases should be taken into account?                                                 #   
+#                                                                                                    #
+######################################################################################################
 
-We can use ansible for upload each hour to 1 of 1000s servers .
+1). We can use ansible for upload each hour to 1 of 1000s servers .
 
 We might run related playbook by using script, which
     -   counts index. It means steps from zero up to max_servers and from zero again (it changes index each time/hour);
@@ -15,7 +20,8 @@ We might run related playbook by using script, which
 We need to configure the crontab according to these settings (for run it automatically hour by hour):
     0 */1 * * * cd <SCRIPT_DIR>/ && ./run_copy.py
 
-Special cases are associated with the violation of ssh key fingerprints and with usernames and passwords on servers
+
+2). Special cases are associated with the violation of ssh key fingerprints and with usernames and passwords on servers
 
 If something happened to the fingerprint on the target host, we can see these requests:
     The authenticity of host ***** can't be established.
@@ -31,8 +37,7 @@ Or
     It is also possible that the RSA host key has just been changed.
     The fingerprint for the RSA key .......
 
-To avoid this, we need to use the keys:
-	host_key_checking = False in ./ansible.cfg
+To avoid this, we need to use the keys in ./ansible.cfg:
+	host_key_checking = False 
 
 We also need to pay attention to the users, passwords, and access rights on the target hosts.
-My script does not take it into account. But it is not difficult to adjust it for a specific situation.
