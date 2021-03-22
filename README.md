@@ -29,10 +29,10 @@ Or
     IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
     Someone could be eavesdropping on you right now (man-in-the-middle attack)!
     It is also possible that the RSA host key has just been changed.
-    The fingerprint for the RSA key ......
+    The fingerprint for the RSA key .......
 
 To avoid this, we need to use the keys:
 	host_key_checking = False in ./ansible.cfg
 
-we also need to pay attention to the users, passwords, and access rights on the target hosts.
+We also need to pay attention to the users, passwords, and access rights on the target hosts.
 My script does not take it into account. But it is not difficult to adjust it for a specific situation.
